@@ -1,0 +1,7 @@
+<div *ngIf="(post$ | async) as post">
+  Post View |
+  <a (click)="goHistoryBack()" style="cursor: pointer">< History Back</a> |
+  <a (click)="goParent()" style="cursor: pointer">< Go to posts list</a>
+  <hr>
+  <pre>{{ post | json }}</pre>
+</div>

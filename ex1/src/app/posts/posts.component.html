@@ -1,0 +1,9 @@
+<div *ngIf="(posts$ | async) as posts">
+  Posts view
+  <hr>
+  <div *ngFor="let post of posts">
+    <pre>{{ post | json }}</pre>
+    <a [routerLink]="'/post/' + post.id">details</a>
+    <hr>
+  </div>
+</div>
