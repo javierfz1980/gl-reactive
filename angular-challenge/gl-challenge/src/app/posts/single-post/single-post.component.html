@@ -1,0 +1,50 @@
+<div *ngIf="post$ | async as post; else loading">
+
+  <!-- title -->
+  <h2>{{ post.title | capitalize }}</h2>
+
+  <!-- body -->
+  <p class="p1">{{ post.body | capitalize }}</p>
+
+  <!-- comments grid -->
+  <div class="comments-grid">
+    <!-- headers -->
+    <div class="row header-row">
+      <div class="col-xs-3 col-email">
+        <div class="p4">Email</div>
+      </div>
+      <div class="col-xs col-comments">
+        <div class="p4">Comment</div>
+      </div>
+    </div>
+    <hr>
+    <!-- content rows -->
+    <div class="row content-row p3" *ngFor="let comment of post.comments">
+      <div class="col-xs-3 col-email">
+        <div><a href="mailto:{{comment.email}}">{{comment.email || ""}}</a></div>
+      </div>
+      <div class="col-xs col-comments">
+        <div>{{comment.body || ""}}</div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="row flex-items-xs-between p5">
+      <div class="col-xs-12 footer-counter">
+        {{ post.comments.length }} comments...
+      </div>
+    </div>
+    <!-- end -->
+  </div>
+
+  <div>
+    <a routerLink="['../']" class="link-normal">Back</a>
+  </div>
+
+</div>
+
+<!-- loading -->
+<ng-template #loading>
+  <div>
+    <div class="spinner spinner-lg"></div>
+  </div>
+</ng-template>

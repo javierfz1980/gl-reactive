@@ -1,0 +1,21 @@
+<h1>{{ title }}</h1>
+
+<!-- post cards -->
+<div *ngIf="posts$ | async as posts; else loading">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card-columns">
+      <gl-post-card *ngFor="let post of posts"
+               [post]="post"
+      ></gl-post-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- post cards loading -->
+<ng-template #loading>
+  <div>
+    <div class="spinner spinner-lg"></div>
+  </div>
+</ng-template>
